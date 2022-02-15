@@ -7,7 +7,7 @@
 
 class Bit{
 	public:
-	enum class bit_t{SET,CLEAR,HIZ,X};
+	enum class bit_t:std::int8_t {SET,CLEAR,HIZ,X};
 	
 	private:
 	bit_t	Value;
