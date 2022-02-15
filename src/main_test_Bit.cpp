@@ -98,6 +98,8 @@ int main(){
 	  assert(TestBit.getValue() == Bit::bit_t::X);	
 	  std::cout << "Test 7 - Bit::unregister - PASSED OK" << std::endl << std::endl;		
 	
+	  std::cout << "Value of TestBit (via <<) : " << TestBit << std::endl;	
+	
 return 0;	
 }
 

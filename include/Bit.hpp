@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <string>
+#include <iostream>
 
 class Bit{
 	public:
@@ -26,6 +27,8 @@ class Bit{
 	void	unregister(){Value=bit_t::X;};	// set to X
 	void	disconnect(){Value=bit_t::HIZ;};	// set to HIZ
 		
+	friend std::ostream &operator<<(std::ostream &os, const Bit &bit) {  os << bit.toString();return os;};
+
 		
 };
 #endif
