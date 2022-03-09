@@ -17,7 +17,3 @@ std::string	Bit::toString() const{
 	
 }	
 
-
-Bit::~Bit(){
-}
-

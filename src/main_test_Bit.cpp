@@ -99,6 +99,11 @@ int main(){
 	  std::cout << "Test 7 - Bit::unregister - PASSED OK" << std::endl << std::endl;		
 	
 	  std::cout << "Value of TestBit (via <<) : " << TestBit << std::endl;	
+	  
+	  // Last test for const bit type
+	  const Bit	HiZbit(Bit::bit_t::HIZ);
+	  std::cout << "Value of HiZbit (via <<) : " << HiZbit << std::endl;	
+	  
 	
 return 0;	
 }
