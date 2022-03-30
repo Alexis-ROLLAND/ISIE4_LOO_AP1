@@ -102,6 +102,7 @@ int main(){
 	  
 	  // Last test for const bit type
 	  const Bit	HiZbit(Bit::bit_t::HIZ);
+	  //HiZbit.set();
 	  std::cout << "Value of HiZbit (via <<) : " << HiZbit << std::endl;	
 	  
 	

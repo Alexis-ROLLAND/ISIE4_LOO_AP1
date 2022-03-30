@@ -18,13 +18,13 @@ class Bit{
 	Bit(bit_t InitialValue):Value{InitialValue}{};	// Ctor with initial bit value
 	virtual ~Bit(){};								// Trivial Dtor
 	
-	bit_t	getValue() const {return Value;};		// getter for the bit value - callable with const bit type
+	bit_t	getValue() const {return this->Value;};		// getter for the bit value - callable with const bit type
 	std::string	toString() const;					// toString "classic" method - callable with const bit type
 	
-	void	set(){Value=bit_t::SET;};			// set to SET
-	void	clear(){Value=bit_t::CLEAR;};		// set to CLEAR
-	void	unregister(){Value=bit_t::X;};		// set to X
-	void	disconnect(){Value=bit_t::HIZ;};	// set to HIZ
+	void	set(){this->Value=bit_t::SET;};			// set to SET
+	void	clear(){this->Value=bit_t::CLEAR;};		// set to CLEAR
+	void	unregister(){this->Value=bit_t::X;};		// set to X
+	void	disconnect(){this->Value=bit_t::HIZ;};	// set to HIZ
 		
 	friend std::ostream &operator<<(std::ostream &os, const Bit &bit) {  os << bit.toString();return os;};	// << operator overloaded - redirecting to toString method. 
 

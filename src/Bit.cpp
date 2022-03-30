@@ -2,7 +2,7 @@
 #include "Bit.hpp"
 
 std::string	Bit::toString() const{
-	switch(Value){ 
+	switch(this->Value){ 
 		case bit_t::SET: return "SET";break;
 		
 		case bit_t::CLEAR: return "CLEAR";break;
