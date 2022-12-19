@@ -5,8 +5,7 @@ set(CMAKE_BUILD_TYPE Debug)
 
 include_directories(include)
 
-
-add_executable(TestBit src/main_test_Bit.cpp src/Bit.cpp)
+add_executable(TestBit src/test_Bit.cpp src/Bit.cpp)
 
 
 
