@@ -23,12 +23,12 @@ class Bit{
 	
 	void	set(){this->Value=bit_t::SET;};			// set to SET
 	void	clear(){this->Value=bit_t::CLEAR;};		// set to CLEAR
-	void	unregister(){this->Value=bit_t::X;};		// set to X
+	void	unregister(){this->Value=bit_t::X;};	// set to X
 	void	disconnect(){this->Value=bit_t::HIZ;};	// set to HIZ
-		
-	friend std::ostream &operator<<(std::ostream &os, const Bit &bit) {  os << bit.toString();return os;};	// << operator overloaded - redirecting to toString method. 
 
-		
 };
+
+std::ostream& operator<<(std::ostream& os, const Bit& bit);
+
 #endif
 
