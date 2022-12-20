@@ -1,6 +1,10 @@
-#include <iostream>
+/**
+ * Bit class test file
+ * 
+ * Uses the doctest test framework
+ */
 
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN	/*! Use if doctest with its own main function*/
 #include "doctest.h"
 
 #include "Bit.hpp"
@@ -51,6 +55,7 @@ TEST_CASE("testing the Bit class : Ctors, getValue accessor and toString method"
 TEST_CASE("testing the Bit class : set(), clear(), disconnect() and unregister() methods") {
 	Bit myBit;
 	
+	// Just get sure the Bit isn't SET yet
 	REQUIRE(myBit.getValue() != Bit::bit_t::SET);
 	
 	myBit.set();
@@ -70,12 +75,13 @@ TEST_CASE("testing the Bit class : set(), clear(), disconnect() and unregister()
 TEST_CASE("testing the Bit class : constant Bit Objects, and << operator") {
 	
 	const Bit HiZbit(Bit::bit_t::HIZ);
-	
 	CHECK(HiZbit.getValue() == Bit::bit_t::HIZ);
 	
-	std::cout << "Value of HiZbit (via <<) : " << HiZbit << std::endl;
+	std::ostringstream str;
 	
-	
+	str << HiZbit;
+	CHECK(str.str() == "HIZ");
+		
 
 }
 
