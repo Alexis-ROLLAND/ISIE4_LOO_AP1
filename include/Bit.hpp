@@ -14,11 +14,11 @@ class Bit{
 	
 	public:
 	
-	Bit():Value{bit_t::X}{};						// Default Ctor - Value is set to 'X'
+	Bit():Value{bit_t::X} {};						// Default Ctor - Value is set to 'X'
 	Bit(bit_t InitialValue):Value{InitialValue}{};	// Ctor with initial bit value
 	virtual ~Bit(){};								// Trivial Dtor
 	
-	bit_t	getValue() const {return this->Value;};		// getter for the bit value - callable with const bit type
+	bit_t	getValue() const {return this->Value;};	// getter for the bit value - callable with const bit type
 	std::string	toString() const;					// toString "classic" method - callable with const bit type
 	
 	void	set(){this->Value=bit_t::SET;};			// set to SET
