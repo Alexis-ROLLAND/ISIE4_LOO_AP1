@@ -10,25 +10,24 @@ class Bit{
 	enum class bit_t:std::int8_t {SET,CLEAR,HIZ,X};		// enum as imbricated class
 	
 	private:
-	bit_t	Value;		// bit value, only attribute.
+	bit_t	Value{bit_t::X};		// bit value, only attribute. Initialized with in-class initializer
 	
 	public:
-	
-	Bit():Value{bit_t::X} {};						// Default Ctor - Value is set to 'X'
-	Bit(bit_t InitialValue):Value{InitialValue}{};	// Ctor with initial bit value
-	virtual ~Bit(){};								// Trivial Dtor
+	Bit() = default;											// No more explicit default Ctor, force use the "by default" (rule of Zero) 
+	explicit Bit(bit_t InitialValue):Value{InitialValue}{};		// Ctor with initial bit value. Single argument -> make explicit to avoid implicit conversions
+	virtual ~Bit() = default;									// Default Dtor
 	
 	bit_t	getValue() const {return this->Value;};	// getter for the bit value - callable with const bit type
-	std::string	toString() const;					// toString "classic" method - callable with const bit type
+	std::string_view	toString() const noexcept;					// toString "classic" method - callable with const bit type. Using the string_view type in place of "classic" string to avoit object copy for const strings.
 	
-	void	set(){this->Value=bit_t::SET;};			// set to SET
-	void	clear(){this->Value=bit_t::CLEAR;};		// set to CLEAR
-	void	unregister(){this->Value=bit_t::X;};	// set to X
-	void	disconnect(){this->Value=bit_t::HIZ;};	// set to HIZ
+	void	set() noexcept {this->Value=bit_t::SET;};			// set to SET
+	void	clear() noexcept {this->Value=bit_t::CLEAR;};		// set to CLEAR
+	void	unregister() noexcept {this->Value=bit_t::X;};		// set to X
+	void	disconnect() noexcept {this->Value=bit_t::HIZ;};	// set to HIZ
 
 };
 
-std::ostream& operator<<(std::ostream& os, const Bit& bit);
+std::ostream& operator<<(std::ostream& os, const Bit& bit) noexcept;	// Overloading of the << operator. Must be obviously outside the class, but not friend function because calling au public service.
 
 #endif
 
