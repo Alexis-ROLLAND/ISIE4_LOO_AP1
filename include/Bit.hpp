@@ -17,13 +17,14 @@ class Bit{
 	explicit Bit(bit_t InitialValue):Value{InitialValue}{};		// Ctor with initial bit value. Single argument -> make explicit to avoid implicit conversions
 	virtual ~Bit() = default;									// Default Dtor
 	
-	bit_t	getValue() const {return this->Value;};	// getter for the bit value - callable with const bit type
-	std::string_view	toString() const noexcept;					// toString "classic" method - callable with const bit type. Using the string_view type in place of "classic" string to avoit object copy for const strings.
+	constexpr bit_t	getValue() const {return this->Value;};		// getter for the bit value - callable with const bit type - Made constexpr
+	[[nodiscard]] std::string_view	toString() const noexcept;	// toString "classic" method - callable with const bit type. Using the string_view type in place of "classic" string to avoit object copy for const strings. [[nodiscard]] here for preventing users to get rid of the return value.
 	
-	void	set() noexcept {this->Value=bit_t::SET;};			// set to SET
-	void	clear() noexcept {this->Value=bit_t::CLEAR;};		// set to CLEAR
-	void	unregister() noexcept {this->Value=bit_t::X;};		// set to X
-	void	disconnect() noexcept {this->Value=bit_t::HIZ;};	// set to HIZ
+	// The four services are consexpr to take opportunity to evaluate them at compile time
+	constexpr void	set() noexcept {this->Value=bit_t::SET;};			// set to SET
+	constexpr void	clear() noexcept {this->Value=bit_t::CLEAR;};		// set to CLEAR
+	constexpr void	unregister() noexcept {this->Value=bit_t::X;};		// set to X
+	constexpr void	disconnect() noexcept {this->Value=bit_t::HIZ;};	// set to HIZ
 
 };
 
