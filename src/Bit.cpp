@@ -1,4 +1,4 @@
-
+	
 #include "Bit.hpp"
 
 std::string_view	Bit::toString() const noexcept{

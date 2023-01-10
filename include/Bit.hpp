@@ -1,3 +1,8 @@
+/**
+ * 
+ * 
+ * 
+ */
 #ifndef __BIT_H__
 #define	__BIT_H__
 
@@ -13,14 +18,24 @@ class Bit{
 	bit_t	Value{bit_t::X};		// bit value, only attribute. Initialized with in-class initializer
 	
 	public:
-	Bit() = default;											// No more explicit default Ctor, force use the "by default" (rule of Zero) 
-	explicit Bit(bit_t InitialValue):Value{InitialValue}{};		// Ctor with initial bit value. Single argument -> make explicit to avoid implicit conversions
-	virtual ~Bit() = default;									// Default Dtor
+	//------------------------------------------------------------------
+	// Special Members Functions (SMF)
+	Bit() = default;														// No explicit default Ctor. Force compiler to provide and use use the "by default" generated 
+	explicit Bit(bit_t InitialValue) noexcept :Value{InitialValue}{};		// Ctor with initial bit value. Single argument -> make explicit to avoid implicit conversions
 	
+	Bit 	(const Bit&)  = default ;										// default copy ctor
+	Bit& 	operator=(const Bit&) = default ; 								// Default copy assignment operator
+	
+	Bit		(Bit&&) noexcept = default;										// Default move Ctor
+	Bit&	operator=(Bit&&) = default;										// Default move assignement operator 
+	
+	virtual ~Bit() = default;												// Default Dtor
+	//------------------------------------------------------------------
+
 	constexpr bit_t	getValue() const {return this->Value;};		// getter for the bit value - callable with const bit type - Made constexpr
 	[[nodiscard]] std::string_view	toString() const noexcept;	// toString "classic" method - callable with const bit type. Using the string_view type in place of "classic" string to avoit object copy for const strings. [[nodiscard]] here for preventing users to get rid of the return value.
 	
-	// The four services are consexpr to take opportunity to evaluate them at compile time
+	// The four services are constexpr to take opportunity to evaluate them at compile time
 	constexpr void	set() noexcept {this->Value=bit_t::SET;};			// set to SET
 	constexpr void	clear() noexcept {this->Value=bit_t::CLEAR;};		// set to CLEAR
 	constexpr void	unregister() noexcept {this->Value=bit_t::X;};		// set to X
