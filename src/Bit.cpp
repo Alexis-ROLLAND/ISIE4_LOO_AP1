@@ -1,6 +1,12 @@
-	
+/**
+ *	@file	Bit.cpp
+ * 	@brief 	Bit class definition file
+ * 	@author	Alexis ROLLAND
+ * 	@date	2023-01
+ * 
+ */	
 #include "Bit.hpp"
-
+//----------------------------------------------------------------------
 std::string_view	Bit::toString() const noexcept{
 	switch(this->Value){ 
 		case bit_t::SET: return "SET";break;
@@ -11,9 +17,10 @@ std::string_view	Bit::toString() const noexcept{
 		}
 	
 }	
-
-std::ostream& operator<<(std::ostream& os, const Bit& bit) noexcept {  	// << operator overloaded - redirecting to toString method.
-	os << bit.toString();
+//----------------------------------------------------------------------
+std::ostream& operator<<(std::ostream& os, const Bit& bit) noexcept {  	
+	os << bit.toString();	/**< 	<< operator overloaded - redirecting to toString method. */
 	return os;
 	}	 
+//----------------------------------------------------------------------
 
