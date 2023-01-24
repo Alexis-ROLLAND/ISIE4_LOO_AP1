@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 include_directories(include)
 
-add_executable(TestBit src/test_Bit.cpp src/Bit.cpp)
+add_executable(testBit src/test_Bit.cpp src/Bit.cpp)
 
 
 

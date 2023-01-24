@@ -59,10 +59,11 @@ class Bit{
 	 * constexpr :	forces the compiler to try to compute at compile time
 	 * const : callable with a const Bit type  
 	 * noexcept : this method throws no exception
+	 * [[nodiscard]] here for preventing users to get rid of the return value (compiler warning in this case).
 	 * 
 	 * @return Bit value (bit_t)
 	 */
-	constexpr bit_t	getValue() const noexcept {return this->Value;};	
+	[[nodiscard]] constexpr bit_t	getValue() const noexcept {return this->Value;};	
 	
 	/**
 	 *	toString "classic" method 

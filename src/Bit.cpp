@@ -8,7 +8,7 @@
 #include "Bit.hpp"
 //----------------------------------------------------------------------
 std::string_view	Bit::toString() const noexcept{
-	switch(this->Value){ 
+	switch(this->getValue()){ 
 		case bit_t::SET: return "SET";break;
 		case bit_t::CLEAR: return "CLEAR";break;
 		case bit_t::HIZ: return "HIZ";break;
