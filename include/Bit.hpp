@@ -2,7 +2,7 @@
  *	@file	Bit.hpp
  * 	@brief 	Bit class header file
  * 	@author	Alexis ROLLAND
- * 	@date	2023-01
+ * 	@date	2024-09
  * 
  */
 #ifndef __BIT_H__
