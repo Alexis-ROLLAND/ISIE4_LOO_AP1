@@ -1,8 +1,8 @@
 /**
- *	@file	Bit.hpp
+ *	@file	  Bit.hpp
  * 	@brief 	Bit class header file
  * 	@author	Alexis ROLLAND
- * 	@date	2024-09
+ * 	@date	  2025-10
  *
  */
 #ifndef __BIT_H__
@@ -10,7 +10,17 @@
 
 #include <cstdint>
 #include <iostream>
+#include <map>
 #include <string>
+
+/**
+ * Bit class
+ * Represents a single bit with four possible states: SET, CLEAR, HIZ (High Impedance), and X (unknown).
+ */
+const std::string_view CLEAR_STR{"CLEAR"};
+const std::string_view SET_STR{"SET"};
+const std::string_view HIZ_STR{"HIZ"};
+const std::string_view X_STR{"X"};
 
 class Bit {
   public:
@@ -26,6 +36,12 @@ class Bit {
     };
 
   private:
+    /*
+     * String representation map for bit_t values
+     */
+    const std::map<bit_t, std::string_view> str_map{
+        {bit_t::CLEAR, CLEAR_STR}, {bit_t::SET, SET_STR}, {bit_t::HIZ, HIZ_STR}, {bit_t::X, X_STR}};
+
     bit_t Value{bit_t::X}; /**< bit value, only attribute. Initialized with in-class initializer at X */
 
     /**
@@ -43,8 +59,8 @@ class Bit {
      */
     Bit() = default; /**<  No explicit default Ctor. Force compiler to provide and use use the "by default" generated */
     explicit Bit(bit_t InitialValue) noexcept
-        : Value{InitialValue} {
-          }; /**<	Ctor with initial bit value. Single argument -> make explicit to avoid implicit conversions */
+        : Value{InitialValue} {}; /**<	Ctor with initial bit value. Single argument -> make explicit to avoid
+                                     implicit conversions */
 
     Bit(const Bit &) = default;            /**< 	default copy ctor	*/
     Bit &operator=(const Bit &) = default; /**< 	Default copy assignment operator	*/

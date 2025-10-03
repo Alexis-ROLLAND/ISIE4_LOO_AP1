@@ -8,20 +8,20 @@
 // Tests unitaires à activer sucessivement.
 #define TEST00_STRUCTURE   // could be deactivated once passed
 
-// #define TESTS_01_TO_03_READY   // Activate BEFORE tests 01 to 03
-// #define TEST01_DEFAULT_CTOR
-// #define TEST02_CTOR_WITH_VALUE
-// #define TEST03_TOSTRING_METHOD
+#define TESTS_01_TO_03_READY   // Activate BEFORE tests 01 to 03
+#define TEST01_DEFAULT_CTOR
+#define TEST02_CTOR_WITH_VALUE
+#define TEST03_TOSTRING_METHOD
 
-// #define TESTS_04_TO_07_READY   // Activate BEFORE tests 04 to 07
-// #define TEST04_SET_METHOD
-// #define TEST05_CLEAR_METHOD
-// #define TEST06_DISCONNECT_METHOD
-// #define TEST07_UNREGISTER_METHOD
+#define TESTS_04_TO_07_READY   // Activate BEFORE tests 04 to 07
+#define TEST04_SET_METHOD
+#define TEST05_CLEAR_METHOD
+#define TEST06_DISCONNECT_METHOD
+#define TEST07_UNREGISTER_METHOD
 
-// #define TESTS_08_TO_09_READY   // Activate BEFORE tests 08 to 09
-// #define TEST08_CONST_BIT
-// #define TEST09_OUT_OPERATOR
+#define TESTS_08_TO_09_READY   // Activate BEFORE tests 08 to 09
+#define TEST08_CONST_BIT
+#define TEST09_OUT_OPERATOR
 //----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
@@ -70,19 +70,19 @@ TEST_CASE("testing the Bit class : Ctors, getValue accessor and toString method"
 #ifdef TEST03_TOSTRING_METHOD
     // toString()
     pBit = new Bit(Bit::bit_t::SET);
-    CHECK(pBit->toString() == "SET");
+    CHECK(pBit->toString() == SET_STR);
     delete pBit;
 
     pBit = new Bit(Bit::bit_t::CLEAR);
-    CHECK(pBit->toString() == "CLEAR");
+    CHECK(pBit->toString() == CLEAR_STR);
     delete pBit;
 
     pBit = new Bit(Bit::bit_t::HIZ);
-    CHECK(pBit->toString() == "HIZ");
+    CHECK(pBit->toString() == HIZ_STR);
     delete pBit;
 
     pBit = new Bit(Bit::bit_t::X);
-    CHECK(pBit->toString() == "X");
+    CHECK(pBit->toString() == X_STR);
     delete pBit;
 #endif
 }
