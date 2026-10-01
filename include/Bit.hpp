@@ -2,7 +2,7 @@
  *	@file	  Bit.hpp
  * 	@brief 	Bit class header file
  * 	@author	Alexis ROLLAND
- * 	@date	  2025-10
+ * 	@date	  2026-10
  *
  */
 #ifndef __BIT_H__
@@ -17,10 +17,10 @@
  * Bit class
  * Represents a single bit with four possible states: SET, CLEAR, HIZ (High Impedance), and X (unknown).
  */
-const std::string_view CLEAR_STR{"CLEAR"};
-const std::string_view SET_STR{"SET"};
-const std::string_view HIZ_STR{"HIZ"};
-const std::string_view X_STR{"X"};
+constexpr std::string_view CLEAR_STR{"CLEAR"};
+constexpr std::string_view SET_STR{"SET"};
+constexpr std::string_view HIZ_STR{"HIZ"};
+constexpr std::string_view X_STR{"X"};
 
 class Bit {
   public:
@@ -36,13 +36,24 @@ class Bit {
     };
 
   private:
-    /*
-     * String representation map for bit_t values
-     */
     const std::map<bit_t, std::string_view> str_map{
-        {bit_t::CLEAR, CLEAR_STR}, {bit_t::SET, SET_STR}, {bit_t::HIZ, HIZ_STR}, {bit_t::X, X_STR}};
+        {bit_t::CLEAR, CLEAR_STR}, {bit_t::SET, SET_STR}, {bit_t::HIZ, HIZ_STR}, {bit_t::X, X_STR}}; /**< Map for string representations */
 
-    bit_t Value{bit_t::X}; /**< bit value, only attribute. Initialized with in-class initializer at X */
+    /**<
+     * private Getter for the map
+     *
+     * @info This method provides access to the internal map of bit states to their string representations.
+     * It's better to use this method instead of directly accessing the map to ensure encapsulation and maintainability.
+     *
+     * constexpr :	forces the compiler to try to compute at compile time
+     * noexcept : this method throws no exception
+     *
+     * @return map of bit_t to string_view
+     */
+
+    constexpr std::map<bit_t, std::string_view> getStrMap() const noexcept { return this->str_map; };
+
+    bit_t Value{bit_t::X}; /**< bit value, only mandatory attribute. Initialized with in-class initializer at X */
 
     /**
      * Private Setter for Value
